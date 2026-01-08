@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+.creation-add {
+    margin: 0.5rem;
+}
+
+.creation-save {
+    margin: 0.5rem;
+}
+
 .creation-card{
     display: flex;
     flex-direction: row;
