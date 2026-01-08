@@ -31,6 +31,11 @@ function TeamCreation({names}: {names: string[]}) {
     }
     
     async function saveTeam() {
+        if (members.length === 0) {
+            alert("Cannot save an empty team!");
+            return;
+        }
+
         if (/^\s*$/.test(teamName)) {
             alert("Cannot save a team without a name!");
             return;
