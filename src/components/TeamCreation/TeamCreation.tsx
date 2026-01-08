@@ -12,7 +12,7 @@ function TeamCreation({names}: {names: string[]}) {
     const [typeColors, setTypeColors] = useState<string[]>([]);
 
     function addMember(pokemon: string) {
-        pokemon = pokemon.toLowerCase();
+        pokemon = pokemon.toLowerCase().trim();
 
         if (!(names.includes(pokemon))) {
             alert("Pokémon not found!");
