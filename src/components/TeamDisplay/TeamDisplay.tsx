@@ -1,16 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import '../../App.css'
 import PokemonCard from '../PokemonCard/PokemonCard';
-
+const URL = 'https://hsw387dosf.execute-api.ap-southeast-2.amazonaws.com';
 
 function TeamDisplay() {
     // fetch all teams from backend (not implemented yet)
-    const teams = [
-        { name: "Team Rocket", members: ["meowth", "ekans", "koffing"] },
-        { name: "Ash's Team", members: ["pikachu", "bulbasaur", "charizard", "squirtle"] }
-    ];
+    const [teams, setTeams] = useState([])
     // display all teams
+    useEffect(() => {
+        const fetchTeams = async () => {
+            try {
+                const response = await fetch(`${URL}/teams`);
+                console.log(response);
+                const body = await response.json();
+                setTeams(body || []);
+            } catch (error) {
+                setTeams([]);
+                console.log(error);
+            }
+        };
+        fetchTeams();
+    }, [])
     
     return (
         <div className="display-teams"> 
@@ -20,7 +31,7 @@ function TeamDisplay() {
                     <div key={team.name} className="team-members">
                         <h3>{team.name}</h3>
                         <div className="member">
-                            {team.members.map((member: string) => (
+                            {team.pokemons.map((member: string) => (
                                 <PokemonCard key={member} pokemon={member} />
                             ))}
                         </div>
