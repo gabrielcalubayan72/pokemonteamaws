@@ -8,12 +8,13 @@ import './TeamCreation.css'
 function TeamCreation({names}: {names: string[]}) {
     const [teamName, setTeamName] = useState<string>([]);
     const [members, setMembers] = useState<string[]>([]);
+    const [searchString, setSearchString] = useState<string>("");
 
     function addMember(pokemon: string) {
         pokemon = pokemon.toLowerCase();
 
         if (!(names.includes(pokemon))) {
-            alert("Pokemon not found!");
+            alert("Pokémon not found!");
             return;
         }
         if (members.length < 6) {
@@ -28,6 +29,11 @@ function TeamCreation({names}: {names: string[]}) {
     }
     
     async function saveTeam() {
+        if (/^\s*$/.test(teamName)) {
+            alert("Cannot save a team without a name!");
+            return;
+        }
+
         const requestOptions = {
             method: 'POST',
             body: btoa(JSON.stringify(
@@ -39,9 +45,18 @@ function TeamCreation({names}: {names: string[]}) {
         const data = await response.json();
     }
 
+    const matchingNames = names.filter(name => name.toLowerCase().includes(searchString.toLowerCase())).map(name =>
+        <option value={name}></option>
+    );
+
     return (
         <div className="team-creation"> 
-            <input type="text" id="add-pokemon" placeholder="Add Pokemon"/>
+            <input list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokémon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
+
+            <datalist id="pokemon-list">
+                {matchingNames}
+            </datalist>
+
             <button onClick={() => {
                 addMember((document.getElementById("add-pokemon") as HTMLInputElement)?.value || "")}}>
                     Add to Team
