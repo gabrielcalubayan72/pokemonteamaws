@@ -46,7 +46,7 @@ function App() {
 
       <h1>Ditto's Ark</h1>
 
-      <p>Create and Save your Pokemon Teams! View all the teams made by other users below...</p>
+      <p>Create and Save your Pokémon Teams! View all the teams made by other users below...</p>
       
       <TeamCreation names={names} />
         

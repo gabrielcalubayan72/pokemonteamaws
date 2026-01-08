@@ -14,7 +14,7 @@ function TeamCreation({names}: {names: string[]}) {
         pokemon = pokemon.toLowerCase();
 
         if (!(names.includes(pokemon))) {
-            alert("Pokemon not found!");
+            alert("Pokémon not found!");
             return;
         }
         if (members.length < 6) {
@@ -51,7 +51,7 @@ function TeamCreation({names}: {names: string[]}) {
 
     return (
         <div className="team-creation"> 
-            <input list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokemon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
+            <input list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokémon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
 
             <datalist id="pokemon-list">
                 {matchingNames}
