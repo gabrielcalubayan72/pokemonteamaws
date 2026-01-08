@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import ditto from './assets/ditto.jpeg'
-import './App.css'
+
+import '../../App.css'
 
 
 function TeamDisplay() {

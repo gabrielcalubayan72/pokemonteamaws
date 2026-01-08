@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import ditto from './assets/ditto.jpeg'
 import './App.css'
-import TeamCreation from './TeamCreation'
-import TeamDisplay from './TeamDisplay'
+import TeamCreation from './components/TeamCreation/TeamCreation'
+import TeamDisplay from './components/TeamDisplay/TeamDisplay'
 
 function App() {
   const [count, setCount] = useState(0)
