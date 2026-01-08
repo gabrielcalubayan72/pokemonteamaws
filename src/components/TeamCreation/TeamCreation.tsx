@@ -66,7 +66,7 @@ function TeamCreation({names}: {names: string[]}) {
                     Add to Team
             </button>
 
-            <div className="creation-add" id="team-card">
+            <div className="creation-card" id="team-card">
                 {members.map((member: string, index: number) => (
                     <div key={index} className="team-member" style={{ backgroundColor: typeColors[index] || 'gray' }}>
                         <PokemonCard key={index} pokemon={member} members={members} setTypeColors={setTypeColors} typeColors={typeColors}/>

@@ -6,6 +6,7 @@
 
 .creation-add {
     margin: 0.5rem;
+    
 }
 
 .creation-save {
@@ -16,8 +17,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+    align-content: center;
     gap: 1% ;
+    justify-content: center;
 }
 
 .team-member {
@@ -63,4 +65,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.team-creation{
+    justify-content: center;
 }

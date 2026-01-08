@@ -22,3 +22,9 @@
     font-size: 1em;
     margin-top: 10px;
 }
+.logo-ditto {
+    height: 8em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
