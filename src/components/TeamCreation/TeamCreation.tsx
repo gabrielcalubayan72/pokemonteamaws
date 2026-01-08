@@ -10,6 +10,8 @@ function TeamCreation({names}: {names: string[]}) {
     const [members, setMembers] = useState<string[]>([]);
 
     function addMember(pokemon: string) {
+        pokemon = pokemon.toLowerCase();
+
         if (!(names.includes(pokemon))) {
             alert("Pokemon not found!");
             return;
@@ -21,8 +23,8 @@ function TeamCreation({names}: {names: string[]}) {
         }
     }
 
-    function removeMember(pokemon: string) {
-        setMembers(members.filter(member => member !== pokemon));
+    function removeMember(index: number) {
+        setMembers(members.filter((_, i) => i !== index));
     }
     
     async function saveTeam() {
@@ -45,11 +47,11 @@ function TeamCreation({names}: {names: string[]}) {
                     Add to Team
             </button>
 
-            <div className="card" id="team-card">
-                {members.map((member: string) => (
-                    <div key={member} className="team-member">
-                        <PokemonCard key={member} pokemon={member} />
-                        <button onClick={() => removeMember(member)}>Remove</button>
+            <div className="creation-card" id="team-card">
+                {members.map((member: string, index: number) => (
+                    <div key={index} className="team-member">
+                        <PokemonCard key={index} pokemon={member} />
+                        <button onClick={() => removeMember(index)}>Remove</button>
                     </div>
                 ))}
             </div>
