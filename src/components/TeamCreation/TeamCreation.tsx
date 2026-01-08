@@ -59,12 +59,14 @@ function TeamCreation({names}: {names: string[]}) {
                 {matchingNames}
             </datalist>
 
-            <button onClick={() => {
+            <button 
+                className="creation-add"
+                onClick={() => {
                 addMember((document.getElementById("add-pokemon") as HTMLInputElement)?.value || "")}}>
                     Add to Team
             </button>
 
-            <div className="creation-card" id="team-card">
+            <div className="creation-add" id="team-card">
                 {members.map((member: string, index: number) => (
                     <div key={index} className="team-member" style={{ backgroundColor: typeColors[index] || 'gray' }}>
                         <PokemonCard key={index} pokemon={member} members={members} setTypeColors={setTypeColors} typeColors={typeColors}/>
@@ -74,7 +76,7 @@ function TeamCreation({names}: {names: string[]}) {
             </div>
             <input className="team-name-input" type="text" placeholder="Team Name" onInput={e => setTeamName((e.target as HTMLTextAreaElement).value)}/>
 
-            <button className="save-team-button" onClick={saveTeam}>
+            <button className="creation-save" onClick={saveTeam}>
                 Save this team! 
             </button>
 

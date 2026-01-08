@@ -20,7 +20,7 @@ function TeamDisplay() {
                 const response = await fetch(`${URL}/teams`);
                 const body = await response.json();
                 console.log(body);
-                setTeams(body || []);
+                setTeams(body.reverse() || []);
             } catch (error) {
                 setTeams([]);
                 console.log(error);
