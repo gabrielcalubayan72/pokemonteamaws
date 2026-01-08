@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import ditto from './assets/ditto.jpeg'
 import './App.css'
+import TeamCreation from './TeamCreation'
+import TeamDisplay from './TeamDisplay'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,25 +11,29 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <img src={ditto} className="logo" alt="Ditto logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <h1>Ditto's Ark</h1>
+
+      <p>Create and Save your Pokemon Teams! View all the teams made by other users below...</p>
+      
+      <TeamCreation />
+
+      
+      <button onClick={() => alert('Team saved!')}>
+        Save this team! 
+      </button>
+        
+      <div className="team-list">
+        <h2>Saved Teams:</h2>
+        
+        <TeamDisplay />
+
+        <TeamDisplay />
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
