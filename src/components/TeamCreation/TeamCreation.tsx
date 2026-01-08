@@ -2,13 +2,16 @@ import { useState } from 'react'
 
 import '../../App.css'
 import PokemonCard from '../PokemonCard/PokemonCard';
+import './TeamCreation.css'
 
 
 function TeamCreation({names}: {names: string[]}) {
-    const [teamName, setTeamName] = useState([]);
-    const [members, setMembers] = useState([]);
+    const [teamName, setTeamName] = useState<string>([]);
+    const [members, setMembers] = useState<string[]>([]);
 
     function addMember(pokemon: string) {
+        pokemon = pokemon.toLowerCase();
+
         if (!(names.includes(pokemon))) {
             alert("Pokemon not found!");
             return;
@@ -20,8 +23,20 @@ function TeamCreation({names}: {names: string[]}) {
         }
     }
 
-    function removeMember(pokemon: string) {
-        setMembers(members.filter(member => member !== pokemon));
+    function removeMember(index: number) {
+        setMembers(members.filter((_, i) => i !== index));
+    }
+    
+    async function saveTeam() {
+        const requestOptions = {
+            method: 'POST',
+            body: btoa(JSON.stringify(
+                { name: teamName, pokemons: members }
+            ))
+        };
+
+        const response = await fetch('https://hsw387dosf.execute-api.ap-southeast-2.amazonaws.com/team', requestOptions);
+        const data = await response.json();
     }
 
     return (
@@ -32,15 +47,19 @@ function TeamCreation({names}: {names: string[]}) {
                     Add to Team
             </button>
 
-            <div className="card" id="team-card">
-                {members.map((member: string) => (
-                    <div key={member} className="team-member">
-                        <PokemonCard key={member} pokemon={member} />
-                        <button onClick={() => removeMember(member)}>Remove</button>
+            <div className="creation-card" id="team-card">
+                {members.map((member: string, index: number) => (
+                    <div key={index} className="team-member">
+                        <PokemonCard key={index} pokemon={member} />
+                        <button onClick={() => removeMember(index)}>Remove</button>
                     </div>
                 ))}
             </div>
-            <input type="text" placeholder="Team Name"/>
+            <input type="text" placeholder="Team Name" onInput={e => setTeamName((e.target as HTMLTextAreaElement).value)}/>
+
+            <button onClick={saveTeam}>
+                Save this team! 
+            </button>
 
         </div>
     )

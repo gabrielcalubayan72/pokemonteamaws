@@ -1,22 +1,32 @@
 /* Stack teams vertically */
 .display-teams {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: flex-start;
+    display: block;
+    flex-direction: column;
+    align-items: stretch;
     gap: 20px;
 }
 
-/* Each team card */
+/* Each team card
 #team-card {
     display: flex;
-    flex-direction: column; /* Stack teams vertically */
+    flex-direction: column;
     gap: 20px;
-}
+} */
 
 /* Members within a team arranged horizontally */
 .member {
     display: flex;
-    flex-direction: row; /* Arrange members horizontally */
-    align-items: center;
-    gap: 15px;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+}
+
+.team-members {
+    display: block;
+    flex-direction: row;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import './PokemonCard.css'
 
 import '../../App.css'
 import bug from '../../assets/types/bug.png'
@@ -57,7 +58,7 @@ function PokemonCard({ pokemon }: { pokemon: string }) {
     }, []);
 
     return (
-        <div className="content">
+        <div className="card-content">
             <img src={spriteLink}
                 className="logo ditto" alt={`${pokemon} logo`} />
             <span>{pokemon}</span>
