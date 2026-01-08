@@ -8,6 +8,7 @@ import './TeamCreation.css'
 function TeamCreation({names}: {names: string[]}) {
     const [teamName, setTeamName] = useState<string>([]);
     const [members, setMembers] = useState<string[]>([]);
+    const [searchString, setSearchString] = useState<string>("");
 
     function addMember(pokemon: string) {
         pokemon = pokemon.toLowerCase();
@@ -44,9 +45,18 @@ function TeamCreation({names}: {names: string[]}) {
         const data = await response.json();
     }
 
+    const matchingNames = names.filter(name => name.toLowerCase().includes(searchString.toLowerCase())).map(name =>
+        <option value={name}></option>
+    );
+
     return (
         <div className="team-creation"> 
-            <input type="text" id="add-pokemon" placeholder="Add Pokemon"/>
+            <input list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokemon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
+
+            <datalist id="pokemon-list">
+                {matchingNames}
+            </datalist>
+
             <button onClick={() => {
                 addMember((document.getElementById("add-pokemon") as HTMLInputElement)?.value || "")}}>
                     Add to Team
