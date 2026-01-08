@@ -4,12 +4,16 @@ import '../../App.css'
 import PokemonCard from '../PokemonCard/PokemonCard';
 
 
-function TeamCreation() {
+function TeamCreation({names}: {names: string[]}) {
 
     const [teamName, setTeamName] = useState([]);
     const [members, setMembers] = useState([]);
 
     function addMember(pokemon: string) {
+        if (!(names.includes(pokemon))) {
+            alert("Pokemon not found!");
+            return;
+        }
         if (members.length < 6) {
             setMembers([...members, pokemon]);
         } else {

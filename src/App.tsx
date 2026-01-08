@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import ditto from './assets/ditto.jpeg'
 import './App.css'
-import TeamCreation from './TeamCreation'
-import TeamDisplay from './TeamDisplay'
+import TeamCreation from './components/TeamCreation/TeamCreation'
+import TeamDisplay from './components/TeamDisplay/TeamDisplay'
 
 interface Pokemon {
   name: string;
@@ -48,7 +48,7 @@ function App() {
 
       <p>Create and Save your Pokemon Teams! View all the teams made by other users below...</p>
       
-      <TeamCreation />
+      <TeamCreation names={names} />
 
       
       <button onClick={() => alert('Team saved!')}>
