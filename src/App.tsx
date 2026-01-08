@@ -58,11 +58,6 @@ function App() {
       <p>Create and Save your Pokemon Teams! View all the teams made by other users below...</p>
       
       <TeamCreation names={names} />
-
-      
-      <button onClick={() => alert('Team saved!')}>
-        Save this team! 
-      </button>
         
       <div className="team-list">
         <h2>Saved Teams:</h2>

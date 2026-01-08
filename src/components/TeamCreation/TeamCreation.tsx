@@ -6,8 +6,8 @@ import './TeamCreation.css'
 
 
 function TeamCreation({names}: {names: string[]}) {
-    const [teamName, setTeamName] = useState([]);
-    const [members, setMembers] = useState([]);
+    const [teamName, setTeamName] = useState<string>([]);
+    const [members, setMembers] = useState<string[]>([]);
 
     function addMember(pokemon: string) {
         if (!(names.includes(pokemon))) {
@@ -23,6 +23,18 @@ function TeamCreation({names}: {names: string[]}) {
 
     function removeMember(pokemon: string) {
         setMembers(members.filter(member => member !== pokemon));
+    }
+    
+    async function saveTeam() {
+        const requestOptions = {
+            method: 'POST',
+            body: btoa(JSON.stringify(
+                { name: teamName, pokemons: members }
+            ))
+        };
+
+        const response = await fetch('https://hsw387dosf.execute-api.ap-southeast-2.amazonaws.com/team', requestOptions);
+        const data = await response.json();
     }
 
     return (
@@ -41,7 +53,11 @@ function TeamCreation({names}: {names: string[]}) {
                     </div>
                 ))}
             </div>
-            <input type="text" placeholder="Team Name"/>
+            <input type="text" placeholder="Team Name" onInput={e => setTeamName((e.target as HTMLTextAreaElement).value)}/>
+
+            <button onClick={saveTeam}>
+                Save this team! 
+            </button>
 
         </div>
     )
