@@ -5,9 +5,14 @@ import '../../App.css'
 import PokemonCard from '../PokemonCard/PokemonCard';
 const URL = 'https://hsw387dosf.execute-api.ap-southeast-2.amazonaws.com';
 
+interface Team {
+    id: string,
+    name: string,
+    pokemons: string[]
+}
+
 function TeamDisplay() {
-    // fetch all teams from backend (not implemented yet)
-    const [teams, setTeams] = useState([])
+    const [teams, setTeams] = useState<Team[]>([])
     // display all teams
     useEffect(() => {
         const fetchTeams = async () => {
