@@ -65,7 +65,7 @@ function TeamCreation({names}: {names: string[]}) {
             <div className="creation-card" id="team-card">
                 {members.map((member: string, index: number) => (
                     <div key={index} className="team-member">
-                        <PokemonCard key={index} pokemon={member} />
+                        <PokemonCard key={index} pokemon={member} members={members}/>
                         <button onClick={() => removeMember(index)}>Remove</button>
                     </div>
                 ))}

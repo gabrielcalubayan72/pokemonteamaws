@@ -43,7 +43,7 @@ const typeImages: { [key: string]: string } = {
 };
 
 
-function PokemonCard({ pokemon }: { pokemon: string }) {
+function PokemonCard({ pokemon, members }: { pokemon: string, members: string[] }) {
     const [spriteLink, setSpriteLink] = useState("");
     const [types, setTypes] = useState([]);
 
@@ -55,7 +55,7 @@ function PokemonCard({ pokemon }: { pokemon: string }) {
             setTypes(data.types);
         };
         fetchPokemon();
-    }, []);
+    }, [members]);
 
     return (
         <div className="card-content">
