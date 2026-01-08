@@ -82,7 +82,7 @@ function PokemonCard({ pokemon, members, setTypeColors, typeColors }: { pokemon:
     return (
         <div className="card-content">
             <img src={spriteLink}
-                className="logo ditto" alt={`${pokemon} logo`} />
+                className="logo-ditto" alt={`${pokemon} logo`} />
             <span className='pokemon-name-text'><strong>{pokemon.charAt(0).toUpperCase() + pokemon.slice(1)}</strong></span>
             <div className="types">
                 {types.map((type: any, index: number) => (

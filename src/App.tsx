@@ -40,6 +40,11 @@ function App() {
 
   return (
     <>
+
+    <img className='background-image' src={'src/assets/Box_City_FRLG.png'} alt="Ditto logo" />
+
+    
+    <div>
       <div>
           <img src={ditto} className="logo" alt="Ditto logo" />
       </div>
@@ -56,6 +61,7 @@ function App() {
         <TeamDisplay />
 
       </div>
+    </div>
       
     </>
   )
