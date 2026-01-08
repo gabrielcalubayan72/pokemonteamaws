@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import '../../App.css'
 import PokemonCard from '../PokemonCard/PokemonCard';
+import './TeamCreation.css'
 
 
 function TeamCreation({names}: {names: string[]}) {

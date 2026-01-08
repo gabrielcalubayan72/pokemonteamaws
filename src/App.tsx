@@ -38,6 +38,15 @@ function App() {
   }, []);
   // console.log(names);
 
+  const teams = [
+        { name: "Team Rocket", members: ["meowth", "ekans", "koffing"] },
+        { name: "Ash's Team", members: ["pikachu", "bulbasaur", "charizard", "squirtle"] },
+
+        { name: "Ash's Team", members: ["pikachu", "bulbasaur", "charizard", "squirtle"] },
+
+        { name: "Ash's Team", members: ["pikachu", "bulbasaur", "charizard", "squirtle"] }
+    ];
+
   return (
     <>
       <div>
@@ -60,6 +69,12 @@ function App() {
         
         <TeamDisplay />
 
+      </div>
+
+      <div className="card" id="team-card">
+          {teams.map((team) => (
+            <TeamDisplay key={team.name} team={team} />
+          ))}
       </div>
       
     </>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import './PokemonCard.css'
 
 import '../../App.css'
 import bug from '../../assets/types/bug.png'
