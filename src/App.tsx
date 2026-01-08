@@ -60,8 +60,6 @@ function App() {
         
         <TeamDisplay />
 
-        <TeamDisplay />
-
       </div>
       
     </>

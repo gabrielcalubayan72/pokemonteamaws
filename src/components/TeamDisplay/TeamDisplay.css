@@ -1,0 +1,22 @@
+/* Stack teams vertically */
+.display-teams {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Each team card */
+#team-card {
+    display: flex;
+    flex-direction: column; /* Stack teams vertically */
+    gap: 20px;
+}
+
+/* Members within a team arranged horizontally */
+.member {
+    display: flex;
+    flex-direction: row; /* Arrange members horizontally */
+    align-items: center;
+    gap: 15px;
+}
