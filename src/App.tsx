@@ -44,7 +44,7 @@ function App() {
           <img src={ditto} className="logo" alt="Ditto logo" />
       </div>
 
-      <h1>Ditto's Ark</h1>
+      <h1 className= 'dittosark' >Ditto's Ark</h1>
 
       <p>Create and Save your Pokémon Teams! View all the teams made by other users below...</p>
       

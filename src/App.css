@@ -34,10 +34,23 @@
   }
 }
 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('src/assets/fonts/PKMN RBYGSC.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.dittosark{
+  font-family: 'MyCustomFont', sans-serif;
+    font-size: 4em;
+    margin-top: 10px;
 }

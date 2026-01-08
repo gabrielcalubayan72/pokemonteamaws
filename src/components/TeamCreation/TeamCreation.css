@@ -8,4 +8,51 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
+    gap: 1% ;
+}
+
+.team-member {
+    padding: 1%;
+    border-radius: 5%;
+}
+
+.add-pokemon-input {
+    margin-bottom: 2%;
+    padding: 1%;
+    width: 50%;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.team-name-input {
+    margin-top: 2%;
+    padding: 1%;
+    width: 50%;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}   
+
+.save-team-button{
+    margin-top: 2%;
+    padding: 1% 2%;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-button{
+    margin-top: 1%;
+    padding: 0.5% 1%;
+    font-size: 0.9em;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

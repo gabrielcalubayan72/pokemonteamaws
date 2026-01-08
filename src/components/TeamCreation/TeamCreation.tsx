@@ -9,6 +9,7 @@ function TeamCreation({names}: {names: string[]}) {
     const [teamName, setTeamName] = useState<string>([]);
     const [members, setMembers] = useState<string[]>([]);
     const [searchString, setSearchString] = useState<string>("");
+    const [typeColors, setTypeColors] = useState<string[]>([]);
 
     function addMember(pokemon: string) {
         pokemon = pokemon.toLowerCase();
@@ -26,6 +27,7 @@ function TeamCreation({names}: {names: string[]}) {
 
     function removeMember(index: number) {
         setMembers(members.filter((_, i) => i !== index));
+        setTypeColors(typeColors.filter((_, i) => i !== index));
     }
     
     async function saveTeam() {
@@ -51,7 +53,7 @@ function TeamCreation({names}: {names: string[]}) {
 
     return (
         <div className="team-creation"> 
-            <input list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokémon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
+            <input className='add-pokemon-input' list="pokemon-list" type="text" id="add-pokemon" placeholder="Add Pokémon" onInput={e => setSearchString((e.target as HTMLTextAreaElement).value)}/>
 
             <datalist id="pokemon-list">
                 {matchingNames}
@@ -64,15 +66,15 @@ function TeamCreation({names}: {names: string[]}) {
 
             <div className="creation-card" id="team-card">
                 {members.map((member: string, index: number) => (
-                    <div key={index} className="team-member">
-                        <PokemonCard key={index} pokemon={member} members={members}/>
-                        <button onClick={() => removeMember(index)}>Remove</button>
+                    <div key={index} className="team-member" style={{ backgroundColor: typeColors[index] || 'gray' }}>
+                        <PokemonCard key={index} pokemon={member} members={members} setTypeColors={setTypeColors} typeColors={typeColors}/>
+                        <button className='remove-button' onClick={() => removeMember(index)}>Remove</button>
                     </div>
                 ))}
             </div>
-            <input type="text" placeholder="Team Name" onInput={e => setTeamName((e.target as HTMLTextAreaElement).value)}/>
+            <input className="team-name-input" type="text" placeholder="Team Name" onInput={e => setTeamName((e.target as HTMLTextAreaElement).value)}/>
 
-            <button onClick={saveTeam}>
+            <button className="save-team-button" onClick={saveTeam}>
                 Save this team! 
             </button>
 

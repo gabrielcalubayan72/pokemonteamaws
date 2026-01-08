@@ -42,8 +42,29 @@ const typeImages: { [key: string]: string } = {
     steel: steel
 };
 
+const colours = {
+	normal: '#A8A77A',
+	fire: '#EE8130',
+	water: '#6390F0',
+	electric: '#F7D02C',
+	grass: '#7AC74C',
+	ice: '#96D9D6',
+	fighting: '#C22E28',
+	poison: '#A33EA1',
+	ground: '#E2BF65',
+	flying: '#A98FF3',
+	psychic: '#F95587',
+	bug: '#A6B91A',
+	rock: '#B6A136',
+	ghost: '#735797',
+	dragon: '#6F35FC',
+	dark: '#705746',
+	steel: '#B7B7CE',
+	fairy: '#D685AD',
+};
 
-function PokemonCard({ pokemon, members }: { pokemon: string, members: string[] }) {
+
+function PokemonCard({ pokemon, members, setTypeColors, typeColors }: { pokemon: string, members: string[], setTypeColors: React.Dispatch<React.SetStateAction<string[]>>, typeColors: string[] }) {
     const [spriteLink, setSpriteLink] = useState("");
     const [types, setTypes] = useState([]);
 
@@ -53,6 +74,7 @@ function PokemonCard({ pokemon, members }: { pokemon: string, members: string[] 
             let data = await response.json();
             setSpriteLink(data.sprites.front_default);
             setTypes(data.types);
+            setTypeColors([...typeColors, colours[data.types[0].type.name as keyof typeof colours] || 'gray']);
         };
         fetchPokemon();
     }, [members]);
@@ -61,7 +83,7 @@ function PokemonCard({ pokemon, members }: { pokemon: string, members: string[] 
         <div className="card-content">
             <img src={spriteLink}
                 className="logo ditto" alt={`${pokemon} logo`} />
-            <span>{pokemon}</span>
+            <span className='pokemon-name-text'><strong>{pokemon.charAt(0).toUpperCase() + pokemon.slice(1)}</strong></span>
             <div className="types">
                 {types.map((type: any, index: number) => (
                     <img src={typeImages[type.type.name]} alt={type.type.name} key={index} className="type-image" />
