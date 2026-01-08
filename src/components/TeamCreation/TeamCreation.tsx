@@ -10,6 +10,8 @@ function TeamCreation({names}: {names: string[]}) {
     const [members, setMembers] = useState([]);
 
     function addMember(pokemon: string) {
+        pokemon = pokemon.toLowerCase();
+        
         if (!(names.includes(pokemon))) {
             alert("Pokemon not found!");
             return;
@@ -33,7 +35,7 @@ function TeamCreation({names}: {names: string[]}) {
                     Add to Team
             </button>
 
-            <div className="card" id="team-card">
+            <div className="creation-card" id="team-card">
                 {members.map((member: string) => (
                     <div key={member} className="team-member">
                         <PokemonCard key={member} pokemon={member} />
