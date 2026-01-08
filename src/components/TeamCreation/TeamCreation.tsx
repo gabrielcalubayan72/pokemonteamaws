@@ -28,6 +28,11 @@ function TeamCreation({names}: {names: string[]}) {
     }
     
     async function saveTeam() {
+        if (/^\s*$/.test(teamName)) {
+            alert("Cannot save a team without a name!");
+            return;
+        }
+
         const requestOptions = {
             method: 'POST',
             body: btoa(JSON.stringify(
